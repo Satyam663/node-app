@@ -21,6 +21,37 @@ router.post('/register', (req, res) => {
     })
 })
 
+// get all transaction
+router.get('/getall', (req, res) =>{
+    // var role="Admin"
+    Transaction.find({},(err, result) => {
+       if (err){
+           console.log(err)
+       } else {
+           console.log(result)
+           res.status(200).send(result);
+       }
+    
+        
+    })
+    
+})
+
+// get all transaction of particular employee
+router.get('/:id', (req, res) =>{
+    // var role="Admin"
+    Transaction.find({name:req.params.id},(err, result) => {
+       if (err){
+           console.log(err)
+       } else {
+           console.log(result)
+           res.status(200).send(result);
+       }
+    
+        
+    })
+    
+})
 // ////login
 // router.post('/login', (req, res) => {
 //     let UserData = req.body
@@ -48,19 +79,5 @@ router.post('/register', (req, res) => {
 //     })
 // })
 
-// get all customer
-router.get('/getall', (req, res) =>{
-    // var role="Admin"
-    Transaction.find({},(err, result) => {
-       if (err){
-           console.log(err)
-       } else {
-           console.log(result)
-           res.status(200).send(result);
-       }
-    
-        
-    })
-    
-})
+
 module.exports = router
