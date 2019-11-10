@@ -5,12 +5,17 @@ const User = require('../model/model')
 const mongoose = require('mongoose')
 const db = "mongodb://localhost:27017/trainingdb"
 mongoose.connect(db, err => {
+    
     if (err) {
         console.log('error!'+err)
     } else {
+        
         console.log('connected to mongodb')
-    }
+             
+        }
 })
+
+
 
 router.get('/',(req, res) => {
     res.send('from api')
