@@ -11,14 +11,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/api', api)
 app.use('/transaction', transaction)
-app.get('/',(req,res)=>{
-    res.send('hello world')
-})
-
-
-
-
-
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
+ 
 
 app.listen(3000,(err)=>{
     if(!err){
@@ -27,6 +24,7 @@ app.listen(3000,(err)=>{
     }
     else{
         console.log('server down');
+
     }
 
 })
